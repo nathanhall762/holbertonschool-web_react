@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development', // Set mode to development
+  devtool: 'inline-source-map', // Enable inline source maps
   entry: './js/dashboard_main.js', // Entry point of your application
   output: {
     filename: 'bundle.js', // Output filename
