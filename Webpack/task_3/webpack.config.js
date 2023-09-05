@@ -1,4 +1,6 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development', // Set mode to development
@@ -12,6 +14,13 @@ module.exports = {
     port: 8564, // Port to run the dev server on
     open: true, // Open browser automatically
   },
+  plugins: [
+    new CleanWebpackPlugin(), // Cleans output folder before build
+    new HtmlWebpackPlugin({
+      template: './public/index.html', // Source HTML file
+      filename: 'index.html', // Output HTML file
+    }), // Generates HTML file and injects script
+  ],
   module: {
     rules: [
       {
