@@ -2,4 +2,8 @@
 import $ from 'jquery';
 
 // Adding three different paragraphs to the page body
-["$('body').append('<p>Holberton Dashboard</p>');", "$('body').append('<p>Dashboard data for the students</p>');", "$('body').append('<p>Copyright - Holberton School</p>');"]
+$(function() {
+  $('body').append('<p>This is paragraph 1.</p>');
+  $('body').append('<p>This is paragraph 2.</p>');
+  $('body').append('<p>This is paragraph 3.</p>');
+});
