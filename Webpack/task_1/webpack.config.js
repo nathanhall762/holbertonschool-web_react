@@ -12,9 +12,6 @@ module.exports = {
       {
         test: /\.js$/, // Test for JavaScript files
         exclude: /node_modules/, // Exclude node_modules
-        use: {
-          loader: 'babel-loader' // Use babel-loader to transpile JavaScript
-        }
       }
     ]
   }
