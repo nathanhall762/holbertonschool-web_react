@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  mode: 'development', // Set mode to development
+  mode: "development", // Set mode to development
   entry: './js/dashboard_main.js', // Entry point of your application
   output: {
     filename: 'bundle.js', // Output filename
