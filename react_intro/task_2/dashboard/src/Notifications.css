@@ -1,0 +1,18 @@
+/* add a border and some padding around class Notifications */
+.Notifications {
+  border: 2px solid #e0354b;
+  padding: 1rem;
+  margin: 3rem;
+  border-radius: 1rem;
+}
+
+.close-icon {
+  float: right;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  height: 1rem;
+  width: 1rem;
+}

@@ -1,0 +1,6 @@
+/* add a border and some padding around class Notifications */
+.Notifications {
+  border: 2px solid #e0354b;
+  padding: 1rem;
+  margin: 3rem;
+}
