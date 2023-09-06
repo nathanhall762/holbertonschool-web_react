@@ -6,13 +6,27 @@
   border-radius: 1rem;
 }
 
+.Notifications button,
 .close-icon {
-  float: right;
+  float: inline-end;
   font-size: 1rem;
   font-weight: bold;
-  margin-right: 1rem;
-  margin-top: 0.5rem;
   cursor: pointer;
-  height: 1rem;
-  width: 1rem;
+  height: 2rem;
+  width: 2rem;
+  background-image: url(./close-icon.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-position: center;
+}
+
+/* Style default priority notifications */
+[data-priority="default"] {
+  color: blue;
+}
+
+/* Style urgent priority notifications */
+[data-priority="urgent"] {
+  color: red;
 }
