@@ -1,5 +1,4 @@
 import React from "react";
-import "./Header.css";
 import logo from "../assets/holbie.jpg";
 import {StyleSheet, css} from 'aphrodite';
 
@@ -22,9 +21,9 @@ const styles = StyleSheet.create({
 
 export default function Header() {
   return (
-    <header className="App-header">
-      <img src={logo} alt="Holberton Logo" />
-      <h1>School dashboard</h1>
+    <header className={css(styles.header)}>
+      <img src={logo} alt="Holberton Logo" className={css(styles.img)}/>
+      <h1 className={css(styles.h1)}>School dashboard</h1>
     </header>
   );
 }

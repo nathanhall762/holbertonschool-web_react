@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import "./Notifications.css";
 import { StyleSheet, css } from "aphrodite";
 
 const styles = StyleSheet.create({

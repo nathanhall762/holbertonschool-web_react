@@ -1,4 +1,3 @@
-import "./App.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Notifications from "../Notifications/Notifications";
@@ -27,7 +26,7 @@ const styles = StyleSheet.create({
     padding: 0,
     fontFamily: 'sans-serif',
   },
-  AppFooter: {
+  footer: {
     position: 'absolute',
     bottom: 0,
     width: '100%',
@@ -97,7 +96,7 @@ class App extends Component {
           <LoggedBodySection title="News from the School">
           </LoggedBodySection>
         </div>
-        <div className={css(styles.AppFooter)}>
+        <div className={css(styles.footer)}>
           <p className={css(styles.AppFooterP)}></p>
           <LoggedFooter />
         </div>
