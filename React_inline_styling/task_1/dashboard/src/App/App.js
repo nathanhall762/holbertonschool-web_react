@@ -22,7 +22,20 @@ const LoggedBodySectionWithMarginBottom = WithLogging(
   BodySectionWithMarginBottom
 );
 const styles = StyleSheet.create({
-  
+  body: {
+    margin: 0,
+    padding: 0,
+    fontFamily: 'sans-serif',
+  },
+  AppFooter: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+  },
+  AppFooterP: {
+    textAlign: 'center',
+    fontStyle: 'italic',
+  },
 });
 
 class App extends Component {
@@ -64,18 +77,30 @@ class App extends Component {
 
     return (
       <>
-        <LoggedNotifications listNotifications={listNotifications} />
-        <LoggedHeader />
-        <LoggedBodySectionWithMarginBottom title="Course list">
-          {isLoggedIn ? <LoggedCourseList listCourses={listCourses} /> : null}
-        </LoggedBodySectionWithMarginBottom>
-        <LoggedBodySectionWithMarginBottom title="Log in to continue">
-          {!isLoggedIn ? <LoggedLogin /> : null}
-        </LoggedBodySectionWithMarginBottom>
-        <LoggedBodySection title="News from the School">
-          <p>Some random text about the latest news from the school.</p>
-        </LoggedBodySection>
-        <LoggedFooter />
+        <div className={css(styles.AppBody)}>
+          <LoggedNotifications listNotifications={listNotifications} />
+        </div>
+        <div className={css(styles.AppBody)}>
+          <LoggedHeader />
+        </div>
+        <div className={css(styles.AppBody)}>
+          <LoggedBodySectionWithMarginBottom title="Course list">
+            {isLoggedIn ? <LoggedCourseList listCourses={listCourses} /> : null}
+          </LoggedBodySectionWithMarginBottom>
+        </div>
+        <div className={css(styles.AppBody)}>
+          <LoggedBodySectionWithMarginBottom title="Log in to continue">
+            {!isLoggedIn ? <LoggedLogin /> : null}
+          </LoggedBodySectionWithMarginBottom>
+        </div>
+        <div className={css(styles.AppBody)}>
+          <LoggedBodySection title="News from the School">
+          </LoggedBodySection>
+        </div>
+        <div className={css(styles.AppFooter)}>
+          <p className={css(styles.AppFooterP)}></p>
+          <LoggedFooter />
+        </div>
       </>
     );
   }
