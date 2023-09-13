@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Define your styles as constants
-const rowStyle = { backgroundColor: "#f5f5f5" };
-const headerRowStyle = { backgroundColor: "#deb5b5" };
+const rowStyle = { backgroundColor: "#f5f5f5ab" };
+const headerRowStyle = { backgroundColor: "#deb5b545" };
 
 const CourseListRow = ({ isHeader = false, textFirstCell, textSecondCell = null }) => {
   const appliedStyle = isHeader ? headerRowStyle : rowStyle; // Choose the style based on `isHeader`
