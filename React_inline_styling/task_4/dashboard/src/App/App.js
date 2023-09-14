@@ -9,7 +9,7 @@ import { getLatestNotification } from "../Utils/utils";
 import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom";
 import BodySection from "../BodySection/BodySection";
 import WithLogging from "../HOC/WithLogging";
-import {StyleSheet, css} from 'aphrodite';
+import { StyleSheet, css } from "aphrodite";
 
 const LoggedCourseList = WithLogging(CourseList);
 const LoggedLogin = WithLogging(Login);
@@ -24,16 +24,16 @@ const styles = StyleSheet.create({
   body: {
     margin: 0,
     padding: 0,
-    fontFamily: 'sans-serif',
+    fontFamily: "sans-serif",
   },
   footer: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
-    width: '100%',
+    width: "100%",
   },
   AppFooterP: {
-    textAlign: 'center',
-    fontStyle: 'italic',
+    textAlign: "center",
+    fontStyle: "italic",
   },
 });
 
@@ -76,30 +76,16 @@ class App extends Component {
 
     return (
       <>
-        <div className={css(styles.AppBody)}>
-          <LoggedNotifications listNotifications={listNotifications} />
-        </div>
-        <div className={css(styles.AppBody)}>
-          <LoggedHeader />
-        </div>
-        <div className={css(styles.AppBody)}>
-          <LoggedBodySectionWithMarginBottom title="Course list">
-            {isLoggedIn ? <LoggedCourseList listCourses={listCourses} /> : null}
-          </LoggedBodySectionWithMarginBottom>
-        </div>
-        <div className={css(styles.AppBody)}>
-          <LoggedBodySectionWithMarginBottom title="Log in to continue">
-            {!isLoggedIn ? <LoggedLogin /> : null}
-          </LoggedBodySectionWithMarginBottom>
-        </div>
-        <div className={css(styles.AppBody)}>
-          <LoggedBodySection title="News from the School">
-          </LoggedBodySection>
-        </div>
-        <div className={css(styles.footer)}>
-          <p className={css(styles.AppFooterP)}></p>
-          <LoggedFooter />
-        </div>
+        <LoggedNotifications listNotifications={listNotifications} />
+        <LoggedHeader />
+        <LoggedBodySectionWithMarginBottom title="Course list">
+          {isLoggedIn ? <LoggedCourseList listCourses={listCourses} /> : null}
+        </LoggedBodySectionWithMarginBottom>
+        <LoggedBodySectionWithMarginBottom title="Log in to continue">
+          {!isLoggedIn ? <LoggedLogin /> : null}
+        </LoggedBodySectionWithMarginBottom>
+        <LoggedBodySection title="News from the School"></LoggedBodySection>
+        <LoggedFooter />
       </>
     );
   }

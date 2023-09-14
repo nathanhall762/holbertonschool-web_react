@@ -7,16 +7,20 @@ const styles = StyleSheet.create({
   default: {
     color: "blue",
     width: "100%",
-    borderBottom: "1px solid black",
-    padding: "10px 8px",
-    fontSize: "20px",
+    "@media (max-width: 900px)": {
+      padding: "10px 8px",
+      fontSize: "20px",
+      borderBottom: "1px solid black",
+    },
   },
   urgent: {
     color: "red",
     width: "100%",
-    borderBottom: "1px solid black",
-    padding: "10px 8px",
-    fontSize: "20px",
+    "@media (max-width: 900px)": {
+      padding: "10px 8px",
+      fontSize: "20px",
+      borderBottom: "1px solid black",
+    },
   },
 });
 

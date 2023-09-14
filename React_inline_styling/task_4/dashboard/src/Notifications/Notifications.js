@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import NotificationItem from "./NotificationItem";
 import NotificationItemShape from "./NotificationItemShape";
 import { StyleSheet, css } from "aphrodite";
+import closeImage from "../assets/close-icon.png";
 
 // Define keyframes first
 const opacityKeyframes = {
@@ -18,10 +19,25 @@ const bounceKeyframes = {
 
 const styles = StyleSheet.create({
   notifications: {
-    border: "2px solid #e0354b",
+    border: "2px dotted #e0354b",
     padding: "1rem",
     margin: "3rem",
     borderRadius: "1rem",
+    backgroundColor: "white",
+    "@media (max-width: 900px)": {
+      position: "absolute",
+      right: "0px",
+      top: "0px",
+      border: "none",
+      margin: "0",
+      height: "100vh",
+      padding: "0",
+      ":hover": {
+        animationName: [opacityKeyframes, bounceKeyframes],
+        animationDuration: "1s, 0.5s",
+        animationIterationCount: "3, 3",
+      },
+    },
   },
   notificationsButton: {
     float: "inline-end",
@@ -30,7 +46,7 @@ const styles = StyleSheet.create({
     cursor: "pointer",
     height: "2rem",
     width: "2rem",
-    backgroundImage: "url(../assets/close-icon.png)",
+    backgroundImage: { closeImage },
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundColor: "white",
@@ -41,6 +57,11 @@ const styles = StyleSheet.create({
       animationIterationCount: "3, 3",
     },
   },
+  closeImage: {
+    height: "1rem",
+    width: "1rem",
+    justifyContent: "center",
+  },
   notificationsDefault: {
     color: "blue",
   },
@@ -50,6 +71,12 @@ const styles = StyleSheet.create({
   opacityKeyframe: {
     from: { opacity: 0.5 },
     to: { opacity: 1 },
+  },
+  unorderedList: {
+    "@media (max-width: 900px)": {
+      listStyle: "none",
+      padding: "0",
+    },
   },
 });
 
@@ -79,9 +106,15 @@ class Notifications extends Component {
               style={{ right: "0px", top: "0px" }}
               aria-label="Close"
               onClick={this.handleClose}
-            ></button>
+            >
+              <img
+                className={css(styles.closeImage)}
+                src={closeImage}
+                alt="close icon"
+              />
+            </button>
             <p>Here is the list of notifications</p>
-            <ul>
+            <ul className={css(styles.unorderedList)}>
               {listNotifications.length === 0 ? (
                 <NotificationItem
                   type="default"

@@ -8,6 +8,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     color: '#e0354b',
     borderBottom: '3px #e0354b solid',
+    "@media (max-width: 900px)": {
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
   },
   h1: {
     display: 'inline',
