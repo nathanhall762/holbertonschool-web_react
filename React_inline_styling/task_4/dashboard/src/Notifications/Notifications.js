@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import NotificationItem from "./NotificationItem";
 import NotificationItemShape from "./NotificationItemShape";
 import { StyleSheet, css } from "aphrodite";
-import closeImage from "../assets/close-icon.png";
 
 // Define keyframes first
 const opacityKeyframes = {
@@ -46,7 +45,6 @@ const styles = StyleSheet.create({
     cursor: "pointer",
     height: "2rem",
     width: "2rem",
-    backgroundImage: { closeImage },
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundColor: "white",
@@ -109,7 +107,7 @@ class Notifications extends Component {
             >
               <img
                 className={css(styles.closeImage)}
-                src={closeImage}
+                src="../assets/close-icon.png"
                 alt="close icon"
               />
             </button>
