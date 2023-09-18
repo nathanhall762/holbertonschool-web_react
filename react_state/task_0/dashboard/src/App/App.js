@@ -13,7 +13,7 @@ import WithLogging from "../HOC/WithLogging";
 
 const LoggedCourseList = WithLogging(CourseList);
 const LoggedLogin = WithLogging(Login);
-const LoggedNotifications = WithLogging(Notifications);
+// const LoggedNotifications = WithLogging(Notifications);
 const LoggedHeader = WithLogging(Header);
 const LoggedFooter = WithLogging(Footer);
 const LoggedBodySection = WithLogging(BodySection);
@@ -70,7 +70,7 @@ class App extends Component {
 
     return (
       <>
-        <LoggedNotifications
+        <Notifications
           listNotifications={listNotifications}
           displayDrawer={displayDrawer}
           handleDisplayDrawer={this.handleDisplayDrawer}

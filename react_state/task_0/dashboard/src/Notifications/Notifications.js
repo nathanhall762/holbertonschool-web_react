@@ -32,17 +32,18 @@ class Notifications extends Component {
 
   render() {
     const { displayDrawer, listNotifications } = this.props;
+    const { handleDisplayDrawer, handleHideDrawer } = this.props;
 
     return (
       <>
-        <div className="menuItem" onClick={this.props.handleDisplayDrawer}>Your notifications</div>
+        <div className="menuItem" onClick={handleDisplayDrawer}>Your notifications</div>
         {displayDrawer && (
           <div className="Notifications">
             <button
               className="close-icon"
               style={{ right: "0px", top: "0px" }}
               aria-label="Close"
-              onClick={this.props.handleHideDrawer}
+              onClick={handleHideDrawer}
             ></button>
             <p>Here is the list of notifications</p>
             <ul>
