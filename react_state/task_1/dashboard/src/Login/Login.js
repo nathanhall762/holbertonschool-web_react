@@ -18,8 +18,11 @@ class Login extends Component {
   }
 
   handleLoginSubmit(event) {
+    console.log(`Logging in with email: ${this.state.email} and password: ${this.state.password}`);
     event.preventDefault();
-    this.setState({ isLoggedIn: true });
+    this.setState({ isLoggedIn: true }, () => {
+      console.log(this.state.isLoggedIn); // Should now log true
+    });
   }
 
   handleChangeEmail(event) {
@@ -58,15 +61,11 @@ class Login extends Component {
           <label htmlFor='password'>Password</label>
           <input type='password' name='password' value={password} onChange={this.handleChangePassword} />
           
-          <input type='submit' value='OK' disabled={!enableSubmit} />
+          <input type='submit' onClick={this.handleLoginSubmit} value='OK' disabled={!enableSubmit} />
         </form>
       </main>
     );
   }
 }
-
-Login.propTypes = {
-  // define any props here, if needed
-};
 
 export default Login;

@@ -86,14 +86,20 @@ class App extends Component {
           </div>
           <BodySection title="News from the School">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus sit
-              ducimus aut reiciendis ex asperiores numquam voluptas? Voluptate
-              odio, officia minima rem placeat itaque, earum in architecto fuga
-              error ex.
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged. It was
+              popularised in the 1960s with the release of Letraset sheets
+              containing Lorem Ipsum passages, and more recently with desktop
+              publishing software like Aldus PageMaker including versions of
+              Lorem Ipsum.
             </p>
           </BodySection>
 
-          <div>
+          <div className={css(styles.footer)}>
             <Footer />
           </div>
         </div>
@@ -113,7 +119,7 @@ App.propTypes = {
 };
 
 const cssVars = {
-  mainColor: "#e0354b",
+  mainColor: "#e01d3f",
 };
 
 const screenSize = {
@@ -133,6 +139,20 @@ const styles = StyleSheet.create({
 
   appBody: {
     display: "flex",
+    justifyContent: "center",
+  },
+
+  footer: {
+    borderTop: `3px solid ${cssVars.mainColor}`,
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    position: "fixed",
+    bottom: 0,
+    fontStyle: "italic",
+    [screenSize.small]: {
+      position: "static",
+    },
   },
 });
 

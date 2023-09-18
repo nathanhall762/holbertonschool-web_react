@@ -1,22 +1,39 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
+import { StyleSheet, css } from "aphrodite";
 
-// Define your styles as constants
-const rowStyle = { backgroundColor: "#f5f5f5ab" };
-const headerRowStyle = { backgroundColor: "#deb5b545" };
+// Define your styles with Aphrodite
+const styles = StyleSheet.create({
+  row: {
+    backgroundColor: "#f5f5f5ab",
+  },
+  headerRow: {
+    backgroundColor: "#deb5b545",
+  },
+  th: {
+    // Your styles for th elements here
+  },
+  // Add more styles as needed
+});
 
-const CourseListRow = ({ isHeader = false, textFirstCell, textSecondCell = null }) => {
-  const appliedStyle = isHeader ? headerRowStyle : rowStyle; // Choose the style based on `isHeader`
+const CourseListRow = ({
+  isHeader = false,
+  textFirstCell,
+  textSecondCell = null,
+}) => {
+  const rowStyle = isHeader ? styles.headerRow : styles.row;
 
   return (
-    <tr style={appliedStyle}>
+    <tr className={css(rowStyle)}>
       {isHeader ? (
         textSecondCell === null ? (
-          <th colSpan="2" style={headerRowStyle}>{textFirstCell}</th>
+          <th colSpan="2" className={css(styles.th)}>
+            {textFirstCell}
+          </th>
         ) : (
           <>
-            <th>{textFirstCell}</th>
-            <th>{textSecondCell}</th>
+            <th className={css(styles.th)}>{textFirstCell}</th>
+            <th className={css(styles.th)}>{textSecondCell}</th>
           </>
         )
       ) : (
@@ -32,10 +49,7 @@ const CourseListRow = ({ isHeader = false, textFirstCell, textSecondCell = null 
 CourseListRow.propTypes = {
   isHeader: PropTypes.bool,
   textFirstCell: PropTypes.string.isRequired,
-  textSecondCell: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  textSecondCell: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 CourseListRow.defaultProps = {
