@@ -65,7 +65,7 @@ class App extends Component {
   }
 
   render() {
-    const { isLoggedIn, listCourses, listNotifications } = this.state;
+    const { isLoggedIn, listCourses, listNotifications, displayDrawer } = this.state;
 
     return (
       <>
