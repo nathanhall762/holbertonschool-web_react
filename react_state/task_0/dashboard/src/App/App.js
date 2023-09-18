@@ -25,6 +25,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      displayDrawer: false,
       isLoggedIn: false,
       listCourses: [
         { id: 1, name: "ES6", credit: 60 },
@@ -39,6 +40,14 @@ class App extends Component {
     };
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
+
+  handleDisplayDrawer = () => {
+    this.setState({ displayDrawer: true });
+  };
+
+  handleHideDrawer = () => {
+    this.setState({ displayDrawer: false });
+  };
 
   componentDidMount() {
     document.addEventListener("keydown", this.handleKeyPress);
