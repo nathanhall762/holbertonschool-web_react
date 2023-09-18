@@ -1,25 +1,14 @@
-import "./App.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Notifications from "../Notifications/Notifications";
 import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import BodySection from "../BodySection/BodySection";
+import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom";
 import Login from "../Login/Login";
 import CourseList from "../CourseList/CourseList";
+import Footer from "../Footer/Footer";
 import { getLatestNotification } from "../Utils/utils";
-import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom";
-import BodySection from "../BodySection/BodySection";
-import WithLogging from "../HOC/WithLogging";
-
-const LoggedCourseList = WithLogging(CourseList);
-const LoggedLogin = WithLogging(Login);
-// const LoggedNotifications = WithLogging(Notifications);
-const LoggedHeader = WithLogging(Header);
-const LoggedFooter = WithLogging(Footer);
-const LoggedBodySection = WithLogging(BodySection);
-const LoggedBodySectionWithMarginBottom = WithLogging(
-  BodySectionWithMarginBottom
-);
+import { StyleSheet, css } from "aphrodite";
 
 class App extends Component {
   constructor(props) {
@@ -39,14 +28,18 @@ class App extends Component {
       ],
     };
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
+    this.handleHideDrawer = this.handleHideDrawer.bind(this);
   }
 
   handleDisplayDrawer = () => {
     this.setState({ displayDrawer: true });
+    console.log("Display drawer");
   };
 
   handleHideDrawer = () => {
     this.setState({ displayDrawer: false });
+    console.log("Hide drawer");
   };
 
   componentDidMount() {
@@ -65,7 +58,7 @@ class App extends Component {
   }
 
   render() {
-    const { isLoggedIn, listCourses, listNotifications } = this.state;
+    const { isLoggedIn, logOut, listCourses, listNotifications } = this.state;
     const { displayDrawer } = this.state;
 
     return (
@@ -76,28 +69,71 @@ class App extends Component {
           handleDisplayDrawer={this.handleDisplayDrawer}
           handleHideDrawer={this.handleHideDrawer}
         />
-        <LoggedHeader />
-        <LoggedBodySectionWithMarginBottom title="Course list">
-          {isLoggedIn ? <LoggedCourseList listCourses={listCourses} /> : null}
-        </LoggedBodySectionWithMarginBottom>
-        <LoggedBodySectionWithMarginBottom title="Log in to continue">
-          {!isLoggedIn ? <LoggedLogin /> : null}
-        </LoggedBodySectionWithMarginBottom>
-        <LoggedBodySection title="News from the School">
-          <p>Some random text about the latest news from the school.</p>
-        </LoggedBodySection>
-        <LoggedFooter />
+        <div className={css(styles.container)}>
+          <div className={css(styles.app)}>
+            <Header />
+          </div>
+          <div className={css(styles.appBody)}>
+            {!isLoggedIn ? (
+              <BodySectionWithMarginBottom title="Log in to continue">
+                <Login />
+              </BodySectionWithMarginBottom>
+            ) : (
+              <BodySectionWithMarginBottom title="Course list">
+                <CourseList listCourses={listCourses} />
+              </BodySectionWithMarginBottom>
+            )}
+          </div>
+          <BodySection title="News from the School">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus sit
+              ducimus aut reiciendis ex asperiores numquam voluptas? Voluptate
+              odio, officia minima rem placeat itaque, earum in architecto fuga
+              error ex.
+            </p>
+          </BodySection>
+
+          <div>
+            <Footer />
+          </div>
+        </div>
       </>
     );
   }
-
-  static defaultProps = {
-    logOut: () => {},
-  };
-
-  static propTypes = {
-    logOut: PropTypes.func,
-  };
 }
+
+App.defaultProps = {
+  isLoggedIn: false,
+  logOut: () => {},
+};
+
+App.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  logOut: PropTypes.func,
+};
+
+const cssVars = {
+  mainColor: "#e0354b",
+};
+
+const screenSize = {
+  small: "@media screen and (max-width: 900px)",
+};
+
+const styles = StyleSheet.create({
+  container: {
+    width: "calc(100% - 16px)",
+    marginLeft: "8px",
+    marginRight: "8px",
+  },
+
+  app: {
+    borderBottom: `3px solid ${cssVars.mainColor}`,
+  },
+
+  appBody: {
+    display: "flex",
+  },
+});
 
 export default App;

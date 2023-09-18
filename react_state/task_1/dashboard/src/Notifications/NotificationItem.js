@@ -1,15 +1,42 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import './Notifications.css';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import { StyleSheet, css } from "aphrodite";
+
+// Define your styles
+const styles = StyleSheet.create({
+  default: {
+    color: "blue",
+    width: "100%",
+    "@media (max-width: 900px)": {
+      padding: "10px 8px",
+      fontSize: "20px",
+      borderBottom: "1px solid black",
+    },
+  },
+  urgent: {
+    color: "red",
+    width: "100%",
+    "@media (max-width: 900px)": {
+      padding: "10px 8px",
+      fontSize: "20px",
+      borderBottom: "1px solid black",
+    },
+  },
+});
 
 class NotificationItem extends PureComponent {
   render() {
     const { id, type, value, html, markAsRead } = this.props;
+
+    // Apply styles conditionally
+    const style = type === "urgent" ? styles.urgent : styles.default;
+
     return (
       <li
+        className={css(style)}
         data-notification-type={type}
         dangerouslySetInnerHTML={html}
-        onClick={() => markAsRead(id)} // Add onClick to call markAsRead
+        onClick={() => markAsRead(id)}
       >
         {value}
       </li>
@@ -26,7 +53,7 @@ NotificationItem.propTypes = {
 };
 
 NotificationItem.defaultProps = {
-  type: 'default',
+  type: "default",
 };
 
 export default NotificationItem;

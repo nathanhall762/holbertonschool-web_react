@@ -1,12 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 import CourseListRow from "./CourseListRow";
-import "./CourseList.css";
-import CourseShape from "./CourseShape"; 
+import CourseShape from "./CourseShape";
+import { StyleSheet, css } from "aphrodite";
+
+const styles = StyleSheet.create({
+  CourseList: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    margin: "0 -10px",
+  }
+});
 
 const CourseList = ({ listCourses = [] }) => {
   return (
-    <table id="CourseList">
+    <table id="CourseList" >
       <thead>
         <CourseListRow textFirstCell="Available courses" isHeader={true} />
         <CourseListRow
