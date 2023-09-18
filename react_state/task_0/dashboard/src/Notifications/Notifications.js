@@ -5,6 +5,18 @@ import NotificationItem from "./NotificationItem";
 import NotificationItemShape from "./NotificationItemShape";
 
 class Notifications extends Component {
+  static propTypes = {
+    displayDrawer: PropTypes.bool,
+    handleDisplayDrawer: PropTypes.func,
+    handleHideDrawer: PropTypes.func,
+  };
+
+  static defaultProps = {
+    displayDrawer: false,
+    handleDisplayDrawer: () => {},
+    handleHideDrawer: () => {},
+  };
+
   shouldComponentUpdate(nextProps) {
     if (
       nextProps.listNotifications.length > this.props.listNotifications.length
@@ -23,14 +35,14 @@ class Notifications extends Component {
 
     return (
       <>
-        <div className="menuItem">Your notifications</div>
+        <div className="menuItem" onClick={this.props.handleDisplayDrawer}>Your notifications</div>
         {displayDrawer && (
           <div className="Notifications">
             <button
               className="close-icon"
               style={{ right: "0px", top: "0px" }}
               aria-label="Close"
-              onClick={this.handleClose}
+              onClick={this.props.handleHideDrawer}
             ></button>
             <p>Here is the list of notifications</p>
             <ul>

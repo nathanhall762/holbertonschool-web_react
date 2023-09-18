@@ -70,7 +70,12 @@ class App extends Component {
 
     return (
       <>
-        <LoggedNotifications listNotifications={listNotifications} />
+        <LoggedNotifications
+          listNotifications={listNotifications}
+          displayDrawer={displayDrawer}
+          handleDisplayDrawer={this.handleDisplayDrawer}
+          handleHideDrawer={this.handleHideDrawer}
+        />
         <LoggedHeader />
         <LoggedBodySectionWithMarginBottom title="Course list">
           {isLoggedIn ? <LoggedCourseList listCourses={listCourses} /> : null}
